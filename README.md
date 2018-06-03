@@ -1,4 +1,4 @@
-# SurveyProject
+# SurveyProject-django
 
 admin = hadeka
 
