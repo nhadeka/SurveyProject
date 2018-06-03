@@ -1,5 +1,4 @@
 # SurveyProject
-first python project
 
 admin = hadeka
 
