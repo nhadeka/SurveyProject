@@ -1,0 +1,24 @@
+{% extends 'survey/base.html' %}
+{% block main_content%}
+
+
+<b>{{question.question_text}}</b>
+
+{% if error_message %}
+    <p><b>{{error_message}}</b></p>
+{% endif %}
+
+<form action="{% url 'survey:vote' question.id %}" class="my-3"  method="post">
+    {% csrf_token %}
+    {% for choice in question.choice_set.all %}
+        <input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{choice.id}}"/>
+        <label for="choice{{forloop.counter}}">{{choice.choice_text}}</label><br>
+    {% endfor %}
+    <br>
+    <input type="submit" class="btn btn-success btn-sm" value="vote"/>
+    <a href="{% url 'survey:index' %}" class=" btn btn-info btn-sm">Back to question list</a>
+</form>
+
+
+{% endblock %}
+

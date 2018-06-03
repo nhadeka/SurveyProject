@@ -1,0 +1,33 @@
+{% extends "survey/base.html" %}
+
+{% block main_content %}
+
+<b>{{question.question_text}}</b>
+<br>
+<table class=" table table-responsive my-3 ">
+    <thead>
+     <tr>
+      <th>Choice</th>
+      <th>Number of vote</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+        {% for choice in question.choice_set.all %}
+        <p>{{choice.choice_text}}</p>
+
+        {% endfor %}
+      </td>
+      <td>
+         {% for choice in question.choice_set.all %}
+           <p> {{choice.votes}} vote{{choice.votes|pluralize}}</p>
+          {% endfor %}
+       </td>
+    </tr>
+    </tbody>
+
+</table>
+<a href="{% url 'survey:detail' question.id %}" class="btn btn-info btn-sm mb-3">Vote again</a>
+
+{% endblock %}

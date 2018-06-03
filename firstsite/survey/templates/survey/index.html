@@ -1,0 +1,16 @@
+{% extends 'survey/base.html' %}
+{% block main_content%}
+
+<p><b>Choose a question please</b></p>
+
+{% if latest_questions %}
+    <ul>
+        {% for question in latest_questions %}
+            <li><a href = {% url "survey:detail" question.id %}><b>{{question.question_text}}</b></a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+ <p>you don't have any questions.Please add some</p>
+{% endif %}
+
+{% endblock %}
